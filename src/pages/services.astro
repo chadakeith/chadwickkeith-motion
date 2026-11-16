@@ -1,0 +1,98 @@
+---
+import Base from "../layouts/Base.astro";
+import jsonLd from "../data/jsonld/services.json";
+import { withBase } from "../data/site";
+---
+
+<Base
+  title="Services — Atlas Technology Solutions | Apple IT &amp; Managed Services, Charlotte NC"
+  description="Atlas Technology Solutions provides Apple certified consulting, Atlas AI consulting, Jamf MDM, Google Workspace administration, Mac network support, and IT automation in Charlotte and the Carolinas."
+  path="/services.html"
+  ogType="website"
+  jsonLd={jsonLd}
+>
+<div class="page-hero">
+    <h1>Services</h1>
+    <p>What I do through Atlas Technology Solutions — Apple certified consulting and managed IT for businesses in Charlotte and across the Carolinas.</p>
+  </div>
+
+  <div class="atlas-banner">
+    <p>Atlas Technology Solutions is an Apple Consultants Network member and a certified Jamf MSP, Integrator, and Services Partner — <a href="https://atlascarolina.com" target="_blank" rel="noopener">learn more at atlascarolina.com</a></p>
+  </div>
+
+  <section>
+    <div class="section-label">What We Do</div>
+    <h2>Apple IT, Managed</h2>
+    <p class="section-desc">Founded in 2018 and based in Davidson, NC, Atlas specializes in Apple deployments, mobile device management, and Mac network support for businesses of all sizes.</p>
+    <div class="service-grid">
+
+      <div class="service-card service-card-featured">
+        <span class="new-label">New offering</span>
+        <span class="skill-icon" aria-hidden="true">✦</span>
+        <h3>Atlas AI Consulting</h3>
+        <p>You don’t need a data science team. You need AI that shows up in Monday’s inbox. We wire AI into email, tickets, CRM, and documents — with security review built in. Consulting, not products.</p>
+        <p style="margin-top: 0.85rem;"><a href="https://atlassolutions.tech" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 500; font-size: 0.875rem;">Learn more at atlassolutions.tech →</a></p>
+      </div>
+
+      <div class="service-card">
+        <span class="skill-icon" aria-hidden="true">🍎</span>
+        <h3>Apple Device Deployment</h3>
+        <p>Zero-touch deployment planning, enrollment workflows, and rollout management for Mac, iPhone, and iPad fleets — backed by Apple certifications and the Apple Consultants Network.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="skill-icon" aria-hidden="true">🛡️</span>
+        <h3>Mobile Device Management</h3>
+        <p>Jamf-based MDM design and administration: policies, configuration profiles, app deployment, and security baselines. Certified Jamf MSP, Integrator, and Services Partner.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="skill-icon" aria-hidden="true">🔄</span>
+        <h3>Managed IT Services</h3>
+        <p>Proactive monitoring, maintenance, and support for your environment — built on years of experience running managed service operations.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="skill-icon" aria-hidden="true">☁️</span>
+        <h3>Google Workspace Administration</h3>
+        <p>User lifecycle management, group operations, security settings, and GAM-based automation and reporting for Google Workspace organizations.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="skill-icon" aria-hidden="true">🌐</span>
+        <h3>Network &amp; Cloud Infrastructure</h3>
+        <p>Mac-friendly network design and support — routing, switching, wireless — plus migrations to cloud platforms like Microsoft 365 and Google Workspace.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="skill-icon" aria-hidden="true">⚙️</span>
+        <h3>IT Automation &amp; Reporting</h3>
+        <p>Custom scripts, audit bots, and dashboards that reduce manual overhead and surface actionable insights — in Python, Bash, and Node.js.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Who It's For</div>
+    <h2>Built for Apple-First Businesses</h2>
+    <div class="about-text" style="max-width: 720px;">
+      <p>Atlas works with small and medium businesses that run on Apple — and mixed environments that need cross-platform support. Whether you're rolling out your first managed Mac fleet, tightening security and compliance on an existing one, or need ongoing administration for Google Workspace, we bring certified expertise without enterprise-vendor overhead.</p>
+      <p>The team's credentials span MasterClass AI Fundamentals, Apple Deployment and Management, Apple Certified Support Professional, Jamf Management Engineer, Jamf Security Consultant, Jamf Certified Admin, and more — see the full <a href={withBase("/credentials.html")}>credentials page</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta-panel">
+      <h2>Let's talk about your environment</h2>
+      <p>Reach the Atlas team for consulting engagements, managed services, or a conversation about what your Apple fleet needs.</p>
+      <div class="hero-links">
+        <a href="mailto:consulting@atlascarolina.com" class="btn btn-primary">consulting@atlascarolina.com</a>
+        <a href="https://atlascarolina.com" target="_blank" rel="noopener" class="btn btn-secondary">Visit atlascarolina.com</a>
+      </div>
+      <p class="cta-contact">Or call <a href="tel:+17048972690">704-897-2690</a> · Davidson, NC — serving Charlotte and the Carolinas</p>
+    </div>
+  </section>
+</Base>

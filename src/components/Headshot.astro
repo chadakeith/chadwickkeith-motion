@@ -1,0 +1,33 @@
+---
+import { withBase } from "../data/site";
+
+interface Props {
+  imgClass?: string;
+  width?: number;
+  height?: number;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "low" | "auto";
+}
+
+const {
+  imgClass = "hero-avatar",
+  width = 256,
+  height = 303,
+  loading = "eager",
+  fetchpriority,
+} = Astro.props;
+---
+
+<picture class="avatar-picture">
+  <source srcset={withBase("/images/chad-keith.webp")} type="image/webp" />
+  <img
+    src={withBase("/images/chad-keith.jpg")}
+    alt="Chad Keith, president of Atlas Technology Solutions"
+    class={imgClass}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+  />
+</picture>

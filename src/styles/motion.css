@@ -1,0 +1,413 @@
+@keyframes card-in {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+    rotate: 1.15deg;
+    scale: 0.96;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes text-in {
+  from { opacity: 0; translate: 0 16px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes heading-drift {
+  from { translate: 0 12px; }
+  to { translate: 0 -10px; }
+}
+
+@keyframes beat-first {
+  0%, 92% { opacity: 1; translate: 0 0; }
+  100% { opacity: 0; translate: 0 -8px; }
+}
+
+@keyframes beat-mid {
+  0% { opacity: 0; translate: 0 8px; }
+  8%, 92% { opacity: 1; translate: 0 0; }
+  100% { opacity: 0; translate: 0 -8px; }
+}
+
+@keyframes beat-last {
+  0% { opacity: 0; translate: 0 8px; }
+  10%, 100% { opacity: 1; translate: 0 0; }
+}
+
+@keyframes portrait-settle {
+  from { scale: 0.96; }
+  to { scale: 1; }
+}
+
+section.pin-story {
+  max-width: 980px;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.pin-sticky {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.pin-visual .avatar-picture {
+  display: block;
+  width: min(240px, 72vw);
+  margin: 0 auto;
+}
+
+.pin-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 256 / 303;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.pin-beats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pin-title {
+  font-size: clamp(1.7rem, 3.2vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.pin-copy {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  max-width: 38rem;
+}
+
+@media (min-width: 900px) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.motion-io section.pin-story {
+      max-width: none;
+      height: 280vh;
+      padding: 0;
+    }
+    html.motion-io .pin-sticky {
+      position: sticky;
+      top: 52px;
+      height: calc(100dvh - 52px);
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.15fr);
+      gap: 3rem;
+    }
+    html.motion-io .pin-beats {
+      position: relative;
+      display: block;
+      min-height: 240px;
+    }
+    html.motion-io .pin-beat {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      translate: 0 14px;
+      transition: opacity 650ms ease, translate 700ms ease;
+    }
+    html.motion-io .pin-beat.is-active {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.motion-io) .quest-card,
+    html:not(.motion-io) .skill-card,
+    html:not(.motion-io) .project-card,
+    html:not(.motion-io) .stat-card,
+    html:not(.motion-io) .archive-item,
+    html:not(.motion-io) .cert-card,
+    html:not(.motion-io) .cert-image-card,
+    html:not(.motion-io) .service-card,
+    html:not(.motion-io) .client-item,
+    html:not(.motion-io) .timeline-item,
+    html:not(.motion-io) .cta-panel,
+    html:not(.motion-io) .chip {
+      animation-name: card-in;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+
+    html:not(.motion-io) .skills-grid > :nth-child(3n+2),
+    html:not(.motion-io) .quests-grid > :nth-child(3n+2),
+    html:not(.motion-io) .projects-grid > :nth-child(3n+2),
+    html:not(.motion-io) .cert-grid > :nth-child(3n+2),
+    html:not(.motion-io) .service-grid > :nth-child(3n+2),
+    html:not(.motion-io) .client-grid > :nth-child(3n+2),
+    html:not(.motion-io) .chip-row > :nth-child(3n+2) {
+      animation-range: entry 6% cover 38%;
+    }
+
+    html:not(.motion-io) .skills-grid > :nth-child(3n),
+    html:not(.motion-io) .quests-grid > :nth-child(3n),
+    html:not(.motion-io) .projects-grid > :nth-child(3n),
+    html:not(.motion-io) .cert-grid > :nth-child(3n),
+    html:not(.motion-io) .service-grid > :nth-child(3n),
+    html:not(.motion-io) .client-grid > :nth-child(3n),
+    html:not(.motion-io) .chip-row > :nth-child(3n) {
+      animation-range: entry 10% cover 42%;
+    }
+
+    html:not(.motion-io) .about-text p,
+    html:not(.motion-io) .section-desc {
+      animation-name: text-in;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+
+    html:not(.motion-io) section > h2,
+    html:not(.motion-io) .page-hero h1,
+    html:not(.motion-io) .section-label {
+      animation-name: heading-drift;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+
+    @media (max-width: 899px) {
+      html:not(.motion-io) .pin-beat {
+        animation-name: card-in;
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 34%;
+      }
+    }
+
+    @media (min-width: 900px) {
+      html:not(.motion-io) section.pin-story {
+        max-width: none;
+        height: 280vh;
+        padding: 0;
+        view-timeline-name: --cred-pin;
+        view-timeline-axis: block;
+      }
+      html:not(.motion-io) .pin-sticky {
+        position: sticky;
+        top: 52px;
+        height: calc(100dvh - 52px);
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem;
+        grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.15fr);
+        gap: 3rem;
+      }
+      html:not(.motion-io) .pin-beats {
+        position: relative;
+        display: block;
+        min-height: 280px;
+      }
+      html:not(.motion-io) .pin-beat {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --cred-pin;
+      }
+      html:not(.motion-io) .pin-beat:nth-child(1) {
+        animation-name: beat-first;
+        animation-range: contain 0% contain 27%;
+      }
+      html:not(.motion-io) .pin-beat:nth-child(2) {
+        animation-name: beat-mid;
+        animation-range: contain 25% contain 52%;
+      }
+      html:not(.motion-io) .pin-beat:nth-child(3) {
+        animation-name: beat-mid;
+        animation-range: contain 50% contain 77%;
+      }
+      html:not(.motion-io) .pin-beat:nth-child(4) {
+        animation-name: beat-last;
+        animation-range: contain 75% contain 100%;
+      }
+      html:not(.motion-io) .pin-portrait {
+        animation-name: portrait-settle;
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --cred-pin;
+        animation-range: contain 0% contain 100%;
+      }
+    }
+  }
+}
+
+html.motion-io .quest-card,
+html.motion-io .skill-card,
+html.motion-io .project-card,
+html.motion-io .stat-card,
+html.motion-io .archive-item,
+html.motion-io .cert-card,
+html.motion-io .cert-image-card,
+html.motion-io .service-card,
+html.motion-io .client-item,
+html.motion-io .timeline-item,
+html.motion-io .cta-panel,
+html.motion-io .chip {
+  opacity: 0;
+  translate: 0 24px;
+  rotate: 1.1deg;
+  scale: 0.97;
+  transition: opacity 650ms ease, translate 700ms ease, rotate 700ms ease, scale 700ms ease;
+}
+
+html.motion-io .quest-card.in-view,
+html.motion-io .skill-card.in-view,
+html.motion-io .project-card.in-view,
+html.motion-io .stat-card.in-view,
+html.motion-io .archive-item.in-view,
+html.motion-io .cert-card.in-view,
+html.motion-io .cert-image-card.in-view,
+html.motion-io .service-card.in-view,
+html.motion-io .client-item.in-view,
+html.motion-io .timeline-item.in-view,
+html.motion-io .cta-panel.in-view,
+html.motion-io .chip.in-view {
+  opacity: 1;
+  translate: 0 0;
+  rotate: 0deg;
+  scale: 1;
+}
+
+html.motion-io .about-text p,
+html.motion-io .section-desc {
+  opacity: 0;
+  translate: 0 14px;
+  transition: opacity 600ms ease, translate 650ms ease;
+}
+
+html.motion-io .about-text p.in-view,
+html.motion-io .section-desc.in-view {
+  opacity: 1;
+  translate: 0 0;
+}
+
+html.motion-io section > h2,
+html.motion-io .page-hero h1,
+html.motion-io .section-label {
+  translate: 0 12px;
+  transition: translate 700ms ease;
+}
+
+html.motion-io section > h2.in-view,
+html.motion-io .page-hero h1.in-view,
+html.motion-io .section-label.in-view {
+  translate: 0 0;
+}
+
+html.motion-io .skills-grid > :nth-child(3n+2),
+html.motion-io .quests-grid > :nth-child(3n+2),
+html.motion-io .projects-grid > :nth-child(3n+2),
+html.motion-io .cert-grid > :nth-child(3n+2),
+html.motion-io .service-grid > :nth-child(3n+2),
+html.motion-io .client-grid > :nth-child(3n+2),
+html.motion-io .chip-row > :nth-child(3n+2) {
+  transition-delay: 80ms;
+}
+
+html.motion-io .skills-grid > :nth-child(3n),
+html.motion-io .quests-grid > :nth-child(3n),
+html.motion-io .projects-grid > :nth-child(3n),
+html.motion-io .cert-grid > :nth-child(3n),
+html.motion-io .service-grid > :nth-child(3n),
+html.motion-io .client-grid > :nth-child(3n),
+html.motion-io .chip-row > :nth-child(3n) {
+  transition-delay: 150ms;
+}
+
+@media (max-width: 899px) {
+  html.motion-io .pin-beat {
+    opacity: 0;
+    translate: 0 22px;
+    rotate: 1deg;
+    scale: 0.98;
+    transition: opacity 650ms ease, translate 700ms ease, rotate 700ms ease, scale 700ms ease;
+  }
+  html.motion-io .pin-beat.in-view {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.pin-story,
+  .pin-story {
+    height: auto !important;
+    view-timeline-name: none !important;
+  }
+  .pin-sticky {
+    position: static !important;
+    height: auto !important;
+  }
+  .pin-beat {
+    position: static !important;
+  }
+  .pin-beat,
+  .quest-card,
+  .skill-card,
+  .project-card,
+  .stat-card,
+  .archive-item,
+  .cert-card,
+  .cert-image-card,
+  .service-card,
+  .client-item,
+  .timeline-item,
+  .cta-panel,
+  .chip,
+  .about-text p,
+  .section-desc,
+  section > h2,
+  .page-hero h1,
+  .section-label,
+  .pin-portrait {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
